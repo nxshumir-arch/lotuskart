@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LotusKart Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .admin-shell{display:flex;min-height:calc(100vh - 76px)}
+    .admin-side{width:240px;background:#111;color:#fff;padding:25px 16px;position:sticky;top:76px;height:calc(100vh - 76px)}
+    .admin-side h3{font-size:14px;margin:0 10px 22px;color:#fff}.admin-side small{color:#999;display:block;margin:0 10px 18px;font-size:9px;letter-spacing:1.4px;font-weight:800}
+    .side-btn{width:100%;text-align:left;background:transparent;color:#aaa;border-radius:10px;padding:12px 13px;margin:3px 0;font-size:12px;font-weight:700}.side-btn.active,.side-btn:hover{background:#d0005c;color:#fff}
+    .admin-main{flex:1;padding:35px 4.5%;max-width:1400px}.admin-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.admin-head h1{margin:5px 0;font-size:30px}.admin-head p{margin:0;color:#777;font-size:12px}.admin-actions{display:flex;gap:10px}.admin-btn{background:#111;color:#fff;padding:11px 15px;border-radius:10px;font-size:11px;font-weight:800}.admin-btn.pink{background:#d0005c}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}.stat-card{background:#fff;border:1px solid #e9e9ed;border-radius:16px;padding:19px}.stat-card small{font-size:9px;color:#999;font-weight:800;letter-spacing:1px}.stat-card strong{display:block;font-size:27px;margin-top:8px}.stat-card span{font-size:10px;color:#777}.panel{background:#fff;border:1px solid #e9e9ed;border-radius:17px;padding:20px;margin-bottom:20px}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.panel-head h2{font-size:17px;margin:0}.table-wrap{overflow:auto}.admin-table{width:100%;border-collapse:collapse;min-width:700px}.admin-table th{text-align:left;font-size:9px;color:#999;letter-spacing:1px;padding:10px;border-bottom:1px solid #eee}.admin-table td{padding:12px 10px;border-bottom:1px solid #f0f0f2;font-size:11px;vertical-align:middle}.admin-table tr:last-child td{border-bottom:0}.prod-mini{width:45px;height:45px;border-radius:9px;object-fit:cover;background:#faf5f7}.status{display:inline-flex;border-radius:20px;padding:6px 9px;font-size:9px;font-weight:800}.status.new{background:#fff0f6;color:#c00052}.status.progress{background:#fff6e7;color:#9a6000}.status.done{background:#eaf8ef;color:#237b42}.status.cancel{background:#f1f1f2;color:#777}.row-actions{display:flex;gap:6px}.tiny-btn{border:1px solid #ddd;background:#fff;border-radius:7px;padding:6px 9px;font-size:9px;font-weight:700}.tiny-btn.danger{color:#b0004b;border-color:#f1bfd3}.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.shop-card{border:1px solid #eee;border-radius:14px;padding:16px}.shop-card h3{font-size:14px;margin:0 0 7px}.shop-card p{font-size:10px;color:#888;margin:0 0 12px}.availability{font-size:9px;font-weight:800}.availability.on{color:#218044}.availability.off{color:#b0004b}.modal-admin{position:fixed;inset:0;background:#0008;z-index:100;display:grid;place-items:center;padding:18px}.admin-form{background:#fff;width:min(600px,100%);max-height:90vh;overflow:auto;border-radius:20px;padding:25px;position:relative}.admin-form h2{margin:4px 0 20px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.form-field{display:flex;flex-direction:column;gap:6px}.form-field.full{grid-column:1/-1}.form-field label{font-size:10px;font-weight:800;color:#666}.form-field input,.form-field select{border:1px solid #ddd;border-radius:9px;padding:11px;outline:0;background:#fff}.form-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.image-upload{border:1px dashed #d5d5da;border-radius:12px;padding:13px;display:flex;gap:13px;align-items:center}.image-preview{width:70px;height:70px;border-radius:10px;object-fit:cover;background:#faf5f7}.close-admin{position:absolute;right:18px;top:18px;width:32px;height:32px;border-radius:50%;background:#f1f1f3;font-size:20px}.notice{background:#fff7fa;border:1px solid #f5cadb;border-radius:12px;padding:12px;font-size:10px;color:#8c3055;margin-bottom:18px}.hidden{display:none!important}.order-detail{line-height:1.7}.search-admin{border:1px solid #ddd;border-radius:9px;padding:10px 12px;width:240px;outline:0;font-size:11px}
+    @media(max-width:900px){.admin-side{width:70px;padding:18px 8px}.admin-side h3{display:none}.admin-side small{font-size:7px;text-align:center;margin:0 0 10px}.side-btn{font-size:0;text-align:center}.side-btn:first-letter{font-size:18px}.admin-main{padding:25px 4%}.stat-grid{grid-template-columns:1fr 1fr}.shop-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.topbar .location-btn{display:none}.admin-shell{min-height:calc(100vh - 68px)}.admin-side{position:fixed;bottom:0;top:auto;left:0;right:0;width:100%;height:62px;z-index:30;display:flex;justify-content:space-around;padding:5px}.admin-side small{display:none}.side-btn{width:auto;margin:0;padding:8px;font-size:9px}.side-btn:first-letter{font-size:inherit}.admin-head{align-items:flex-start;gap:10px}.admin-head h1{font-size:24px}.admin-actions{flex-direction:column}.stat-grid{gap:8px}.stat-card{padding:14px}.stat-card strong{font-size:21px}.shop-grid{grid-template-columns:1fr}.admin-main{padding-bottom:85px}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}.search-admin{width:160px}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="assets/lotuskart-logo.png" alt="LotusKart"></a>
+  <div class="partner-badge">ADMIN CONTROL</div>
+  <div class="header-actions"><a class="switch-link" href="index.html">Customer view →</a><a class="switch-link" href="delivery.html">Delivery view →</a></div>
+</header>
+<div class="admin-shell">
+  <aside class="admin-side">
+    <small>MANAGEMENT</small>
+    <h3>LotusKart Admin</h3>
+    <button class="side-btn active" onclick="showTab('dashboard',this)">▦ &nbsp; Dashboard</button>
+    <button class="side-btn" onclick="showTab('orders',this)">◷ &nbsp; Orders</button>
+    <button class="side-btn" onclick="showTab('products',this)">▣ &nbsp; Products</button>
+    <button class="side-btn" onclick="showTab('shops',this)">⌂ &nbsp; Shops</button>
+  </aside>
+  <main class="admin-main">
+    <section id="dashboard" class="tab">
+      <div class="admin-head"><div><span class="eyebrow">CONTROL CENTRE</span><h1>Good evening, Admin.</h1><p>Manage LotusKart for Alipur from one place.</p></div><div class="admin-actions"><button class="admin-btn pink" onclick="showTabByName('products')">+ Add product</button><button class="admin-btn" onclick="showTabByName('shops')">+ Add shop</button></div></div>
+      <div class="stat-grid" id="stats"></div>
+      <div class="panel"><div class="panel-head"><h2>Recent orders</h2><button class="text-btn" onclick="showTabByName('orders')">View all →</button></div><div class="table-wrap"><table class="admin-table"><thead><tr><th>ORDER</th><th>CUSTOMER</th><th>TOTAL</th><th>PAYMENT</th><th>STATUS</th></tr></thead><tbody id="recentOrders"></tbody></table></div></div>
+    </section>
+
+    <section id="orders" class="tab hidden">
+      <div class="admin-head"><div><span class="eyebrow">ORDERS</span><h1>Manage orders</h1><p>Review, assign and update every customer order.</p></div><select class="search-admin" id="orderFilter" onchange="renderOrders()"><option value="All">All statuses</option><option>New</option><option>Accepted</option><option>Picked up</option><option>Delivered</option><option>Cancelled</option></select></div>
+      <div class="notice">Live backend: orders, products, shops and uploaded product images are stored on the LotusKart server.</div>
+      <div class="panel"><div class="table-wrap"><table class="admin-table"><thead><tr><th>ORDER</th><th>CUSTOMER / ADDRESS</th><th>ITEMS</th><th>SHOP(S)</th><th>TOTAL</th><th>PAYMENT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="ordersTable"></tbody></table></div></div>
+    </section>
+
+    <section id="products" class="tab hidden">
+      <div class="admin-head"><div><span class="eyebrow">CATALOGUE</span><h1>Products</h1><p>Add new items, edit names, prices, shops and images.</p></div><button class="admin-btn pink" onclick="openProductModal()">+ Add product</button></div>
+      <div class="panel"><div class="panel-head"><h2>Your catalogue</h2><input class="search-admin" id="productSearch" placeholder="Search products..." oninput="renderProductsAdmin()"></div><div class="table-wrap"><table class="admin-table"><thead><tr><th>PRODUCT</th><th>SHOP</th><th>CATEGORY</th><th>PRICE</th><th>AVAILABILITY</th><th>ACTION</th></tr></thead><tbody id="productsTable"></tbody></table></div></div>
+    </section>
+
+    <section id="shops" class="tab hidden">
+      <div class="admin-head"><div><span class="eyebrow">LOCAL PARTNERS</span><h1>Shops</h1><p>Create and manage the local shops supplying LotusKart.</p></div><button class="admin-btn pink" onclick="openShopModal()">+ Add shop</button></div>
+      <div class="shop-grid" id="shopsGrid"></div>
+    </section>
+  </main>
+</div>
+
+<div class="modal-admin hidden" id="productModal"><div class="admin-form"><button class="close-admin" onclick="closeModal('productModal')">×</button><span class="eyebrow">CATALOGUE</span><h2 id="productModalTitle">Add product</h2><div class="form-grid">
+  <div class="form-field full"><label>PRODUCT IMAGE</label><div class="image-upload"><img id="productPreview" class="image-preview" src="" alt="Preview"><div><input id="productImage" type="file" accept="image/*" onchange="previewImage(this)"><small style="display:block;color:#999;margin-top:5px">Upload JPG, PNG or WEBP. The image is stored locally in this prototype.</small></div></div></div>
+  <div class="form-field full"><label>PRODUCT NAME</label><input id="productName" placeholder="e.g. Aashirvaad Atta"></div>
+  <div class="form-field"><label>PRICE (₹)</label><input id="productPrice" type="number" min="0" placeholder="99"></div>
+  <div class="form-field"><label>UNIT / SIZE</label><input id="productUnit" placeholder="1 kg"></div>
+  <div class="form-field"><label>SHOP</label><select id="productShop"></select></div>
+  <div class="form-field"><label>CATEGORY</label><select id="productCategory"><option>Staples</option><option>Vegetables</option><option>Fruits</option><option>Dairy</option><option>Snacks</option><option>Bakery</option><option>Beverages</option><option>Household</option></select></div>
+  <div class="form-field"><label>AVAILABLE?</label><select id="productAvailable"><option value="true">Available</option><option value="false">Unavailable</option></select></div>
+</div><div class="form-actions"><button class="tiny-btn" onclick="closeModal('productModal')">Cancel</button><button class="admin-btn pink" onclick="saveProduct()">Save product</button></div></div></div>
+
+<div class="modal-admin hidden" id="shopModal"><div class="admin-form"><button class="close-admin" onclick="closeModal('shopModal')">×</button><span class="eyebrow">LOCAL PARTNER</span><h2>Add shop</h2><div class="form-grid"><div class="form-field full"><label>SHOP NAME</label><input id="shopName" placeholder="e.g. Sharma General Store"></div><div class="form-field"><label>AREA / LANDMARK</label><input id="shopArea" placeholder="Main Road"></div><div class="form-field"><label>CONTACT (OPTIONAL)</label><input id="shopPhone" placeholder="Phone number"></div><div class="form-field"><label>STATUS</label><select id="shopAvailable"><option value="true">Open / available</option><option value="false">Unavailable</option></select></div></div><div class="form-actions"><button class="tiny-btn" onclick="closeModal('shopModal')">Cancel</button><button class="admin-btn pink" onclick="saveShop()">Add shop</button></div></div></div>
+
+<div class="modal-admin hidden" id="orderModal"><div class="admin-form"><button class="close-admin" onclick="closeModal('orderModal')">×</button><span class="eyebrow">ORDER DETAILS</span><h2 id="orderDetailTitle"></h2><div id="orderDetail"></div></div></div>
+<div class="toast" id="toast"></div>
+<script src="admin.js"></script>
+</body>
+</html>

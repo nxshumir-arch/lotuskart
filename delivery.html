@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LotusKart Delivery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="delivery-page">
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="assets/lotuskart-logo.png" alt="LotusKart"></a>
+  <div class="partner-badge">DELIVERY PARTNER</div>
+  <a class="switch-link" href="index.html">Customer view →</a>
+</header>
+<main class="delivery-main">
+  <div class="delivery-welcome">
+    <div><span class="eyebrow">LOTUSKART DELIVERY</span><h1>Good evening, Partner.</h1><p>Keep it simple. Pick up, deliver, done.</p></div>
+    <div class="online-pill"><i></i> Online</div>
+  </div>
+  <div class="delivery-stats">
+    <div><small>NEW ORDERS</small><strong id="newOrdersCount">0</strong></div>
+    <div><small>DELIVERED TODAY</small><strong id="deliveredTodayCount">0</strong></div>
+    <div><small>EARNINGS</small><strong id="earningsCount">₹0</strong></div>
+  </div>
+  <section>
+    <div class="section-head"><div><span class="eyebrow">ACTION NEEDED</span><h2>Orders to deliver</h2></div></div>
+    <div class="delivery-orders" id="deliveryOrders"></div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+<script src="delivery.js"></script>
+</body>
+</html>

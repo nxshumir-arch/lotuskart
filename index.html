@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LotusKart — Alipur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <img src="assets/lotuskart-logo.png" alt="LotusKart">
+    </a>
+    <button class="location-btn" id="locationBtn">📍 <span>Deliver to</span><strong>Alipur</strong>⌄</button>
+    <div class="header-actions">
+      <button class="icon-btn" title="Search" onclick="document.getElementById('search').focus()">⌕</button>
+      <button class="cart-btn" onclick="openCart()">🛒 <span>Cart</span><b id="cartCount">0</b></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="eyebrow">ALIPUR'S LOCAL QUICK COMMERCE</span>
+        <h1>Groceries from<br><em>your local shops.</em></h1>
+        <p>Order everyday essentials from trusted shops around Alipur and get them delivered to your doorstep.</p>
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input id="search" type="search" placeholder="Search for milk, rice, biscuits..." autocomplete="off">
+        </div>
+        <div class="hero-meta">
+          <span>⚡ Minutes to a few hours</span>
+          <span>✓ No minimum order</span>
+          <span>₹0 delivery above ₹250</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="circle"></div>
+        <div class="floating-card card-one">⚡ <strong>Fast local delivery</strong></div>
+        <div class="floating-card card-two">🏪 <strong>10+ local shops</strong></div>
+        <div class="bag">🛍️</div>
+      </div>
+    </section>
+
+    <section class="section" id="categoriesSection">
+      <div class="section-head"><div><span class="eyebrow">BROWSE</span><h2>Shop by category</h2></div></div>
+      <div class="categories" id="categories"></div>
+    </section>
+
+    <section class="section products-section">
+      <div class="section-head">
+        <div><span class="eyebrow">POPULAR NEAR YOU</span><h2 id="productTitle">Everyday essentials</h2></div>
+        <button class="text-btn" onclick="showAll()">View all →</button>
+      </div>
+      <div class="products" id="products"></div>
+      <div class="empty-state hidden" id="emptyState">No products found. Try another search.</div>
+    </section>
+
+    <section class="trust-strip">
+      <div><b>🏪</b><span><strong>Local shops</strong><small>Support businesses in Alipur</small></span></div>
+      <div><b>⚡</b><span><strong>Quick delivery</strong><small>Minutes to a few hours</small></span></div>
+      <div><b>🔒</b><span><strong>Easy payments</strong><small>UPI or Cash on Delivery</small></span></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="active">⌂<span>Home</span></button>
+    <button onclick="document.getElementById('categoriesSection').scrollIntoView({behavior:'smooth'})">▦<span>Categories</span></button>
+    <button onclick="openOrders()">◷<span>Orders</span></button>
+    <button onclick="openCart()">🛒<span>Cart</span><i id="navCartCount">0</i></button>
+  </nav>
+
+  <div class="overlay hidden" id="overlay" onclick="closePanels(event)">
+    <aside class="drawer" id="cartDrawer" onclick="event.stopPropagation()">
+      <div class="drawer-head"><div><span class="eyebrow">YOUR ORDER</span><h2>Cart</h2></div><button onclick="closePanels()">×</button></div>
+      <div id="cartItems" class="cart-items"></div>
+      <div id="cartFooter" class="cart-footer"></div>
+    </aside>
+  </div>
+
+  <div class="modal-overlay hidden" id="checkoutModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeCheckout()">×</button>
+      <span class="eyebrow">CHECKOUT</span><h2>Where should we deliver?</h2>
+      <label>Delivery address</label>
+      <textarea id="address" rows="3" placeholder="House / street / landmark in Alipur"></textarea>
+      <label>Phone number</label>
+      <input id="phone" type="tel" placeholder="10-digit mobile number">
+      <label>Payment method</label>
+      <div class="payment-options">
+        <button class="payment selected" data-method="UPI" onclick="selectPayment(this)">UPI <small>GPay • PhonePe • Paytm • any UPI app</small></button>
+        <button class="payment" data-method="COD" onclick="selectPayment(this)">Cash on Delivery <small>Pay when your order arrives</small></button>
+      </div>
+      <div id="checkoutTotal"></div>
+      <button class="primary full" onclick="placeOrder()">Place order <span>→</span></button>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:0 20px 90px;color:#999;font-size:10px">LotusKart · Alipur · <a href="admin.html" style="color:#c80055;text-decoration:none;font-weight:700">Admin</a> · <a href="delivery.html" style="color:#c80055;text-decoration:none;font-weight:700">Delivery Partner</a></footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
